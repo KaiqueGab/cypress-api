@@ -13,7 +13,7 @@ describe('Deletar Dispositivos', () => {
         };
         cy.request({
             method: 'POST',
-            url: 'https://api.restful-api.dev/objects',
+            url: '/objects',
             body: bodyRequest,
             failOnStatusCode: false
         }).then((postResponse) => {
@@ -27,7 +27,7 @@ describe('Deletar Dispositivos', () => {
 
             cy.request({
                 method: 'DELETE',
-                url: `https://api.restful-api.dev/objects/${deviceId}`,
+                url: `/objects/${deviceId}`,
                 failOnStatusCode: false
             }).then((deleteResponse) => {
                 expect([200, 204]).to.include(deleteResponse.status)

@@ -29,7 +29,7 @@ describe('Atualizar um dispositivos', () => {
 
         cy.request({
             method: 'POST',
-            url: 'https://api.restful-api.dev/objects',
+            url: '/objects',
             body: postBodyRequest,
             failOnStatusCode: false
         }).as('postDeviceResult');
@@ -44,7 +44,7 @@ describe('Atualizar um dispositivos', () => {
 
             cy.request({
                 method: 'PUT',
-                url: `https://api.restful-api.dev/objects/${postResponse.body.id}`,
+                url: `/objects/${postResponse.body.id}`,
                 body: putBodyRequest,
                 failOnStatusCode: false
             }).as('putDeviceResult');
@@ -60,7 +60,7 @@ describe('Atualizar um dispositivos', () => {
 
             cy.request({
                 method: 'GET',
-                url: `https://api.restful-api.dev/objects/${postResponse.body.id}`,
+                url: `/objects/${postResponse.body.id}`,
                 failOnStatusCode: false
             }).as('getAfterPutDeviceResult');
 

@@ -16,7 +16,7 @@ describe('Criar Dispositivos', () => {
 
         cy.request({
             method: 'POST',
-            url: 'https://api.restful-api.dev/objects',
+            url: '/objects',
             body: bodyRequest,
             failOnStatusCode: false
         }).as('postDeviceResult');
