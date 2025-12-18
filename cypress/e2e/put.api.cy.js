@@ -5,6 +5,8 @@ const { get } = require("lodash");
 describe('Atualizar um dispositivos', () => {
     it('Atualizar um dispositivo', () => {
 
+        const dataAtual = new Date().toISOString().slice(0,16);
+
         const postBodyRequest = {
             "name": "Beats Studio3 - CREATED POST",
             "createdAt": "2025-12-04T11:53:38.004+00:00",
@@ -52,6 +54,7 @@ describe('Atualizar um dispositivos', () => {
                 expect(putResponse.status).eq(200)
                 expect(putResponse.body.name).eq(putBodyRequest.name)
                 expect(putResponse.body.data.owner).eq(putBodyRequest.data.owner)
+                expect(putResponse.body.updatedAt.slice(0,16)).eq(dataAtual)
                 cy.log(putResponse.body)
             });
 
