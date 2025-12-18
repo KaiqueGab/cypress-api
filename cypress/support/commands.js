@@ -34,7 +34,6 @@ Cypress.Commands.add('deletarDevice', (idResponse) => {
     }).then((response) => { return response })
 });
 
-
 Cypress.Commands.add('deletarDeviceFail', (id) => {
     cy.request({
         method: 'DELETE',
