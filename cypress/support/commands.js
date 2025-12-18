@@ -10,12 +10,43 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('buscarDeviceEspecifico', (deviceId) => {
+    cy.request({
+        method: 'GET',
+        url: `/objects/${deviceId}`,
+        failOnStatusCode: false
+    }).then((response) => { return response });
+});
+
+Cypress.Commands.add('cadastrarDevice', (bodyRequest) => {
+    cy.request({
+        method: 'POST',
+        url: '/objects',
+        body: bodyRequest,
+        failOnStatusCode: false
+    }).then((response) => { return response });
+});
+
+Cypress.Commands.add('deletarDevice', (idResponse) => {
+    cy.request({
+        method: 'DELETE',
+        url: `/objects/${idResponse}`,
+    }).then((response) => { return response })
+});
+
+
+Cypress.Commands.add('deletarDeviceFail', (id) => {
+    cy.request({
+        method: 'DELETE',
+        url: `/objects/${id}`,
+        failOnStatusCode: false
+    }).then((response) => { return response })
+});
 //
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
+//, (email, password)
 //
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
