@@ -6,15 +6,9 @@ describe('Criar Dispositivos', () => {
 
         const dataAtual = new Date().toISOString().slice(0, 16);
 
-        const bodyRequest = {
-            "name": "Wireless Headphones",
-            "data": {
-                "Color": "Red",
-                "Description": "High-performance wireless noise cancelling headphones"
-            }
-        };
+        const payloadCadastroDevice = require('../fixtures/cadastrar_device_sucesso.json');
 
-        cy.cadastrarDevice(bodyRequest)
+        cy.cadastrarDevice(payloadCadastroDevice)
             .then((response) => {
                 expect(response.status).eq(200);
                 expect(response.body.id).not.empty;

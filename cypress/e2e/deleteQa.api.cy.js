@@ -2,20 +2,13 @@
 
 describe('Deletar Dispositivos', () => {
 
-    it('Deletar um dispositivo', () => {
+    const bodyRequest = require('../fixtures/cadastrar_device_sucesso.json');
 
-        const bodyRequest = {
-            "name": "Wireless Headphones",
-            "data": {
-                "Color": "Red",
-                "Description": "High-performance wireless noise cancelling headphones"
-            }
-        };
+    it('Deletar um dispositivo', () => {
 
         cy.cadastrarDevice(bodyRequest)
             .then((response) => {
                 expect(response.status).eq(200)
-
                 cy.deletarDevice(response.body.id)
                     .then((deleteResponse) => {
                         expect(deleteResponse.status).eq(200)
